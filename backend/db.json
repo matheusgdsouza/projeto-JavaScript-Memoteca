@@ -64,6 +64,11 @@
       "id": "4d2e",
       "conteudo": "Se eu for aí e achar, eu esfrego na sua cara!",
       "autoria": "Mãe"
+    },
+    {
+      "id": "jHyB9l4It7Y",
+      "conteudo": "Deus ajuda quem cedo madruga",
+      "autoria": "Matheus Souza"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

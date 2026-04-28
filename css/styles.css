@@ -185,10 +185,12 @@ h2, h3 {
 #botao-salvar {
   background: var(--Azul-Dark, #041832);
   min-width: 160px;
+  cursor: pointer;
 }
 
 #botao-cancelar {
   color: var(--Azul-Dark, #041832);
+  cursor: pointer;
 }
 
 #lista-pensamentos-container {
