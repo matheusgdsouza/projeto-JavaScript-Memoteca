@@ -9,6 +9,24 @@ const api = {
             alert('Erro ao buscar pensamentos: ' + error.message);
             throw error;
         }      
+    },
+
+    async salvarPensamento(pensamento) {
+        try {
+            const response = await fetch('http://localhost:3001/pensamentos', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(pensamento)
+            });
+            const data = await response.json();
+            return data;
+        }    
+        catch (error) {
+            alert('Erro ao buscar pensamentos: ' + error.message);
+            throw error;
+        }      
     }
 }
 
