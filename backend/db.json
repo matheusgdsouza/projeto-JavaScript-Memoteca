@@ -66,9 +66,19 @@
       "autoria": "Mãe"
     },
     {
-      "id": "jHyB9l4It7Y",
-      "conteudo": "Deus ajuda quem cedo madruga",
-      "autoria": "Matheus Souza"
+      "id": "HCWl5fHTMs4",
+      "conteudo": "A vingança nunca é plena, mata a alma e a envenena.",
+      "autoria": "Sr. Madruga"
+    },
+    {
+      "conteudo": "Pague o aluguel!",
+      "autoria": "Sr Barriga",
+      "id": "T9QkIt-_v9A"
+    },
+    {
+      "conteudo": "Deus ajuda quem cedo madruga, mas eu gosto de dormir tarde...",
+      "autoria": "Matheus Souza",
+      "id": "yOvxODwXPYo"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
