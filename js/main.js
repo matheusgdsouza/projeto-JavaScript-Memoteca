@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     formularioPensamento.addEventListener('submit', enviarNovoPensamento);
 
     const btnCancelarFormulario = document.querySelector('#botao-cancelar');
-    btnCancelarFormulario.addEventListener('click', limparFormulario);
+    btnCancelarFormulario.addEventListener('click', ui.limparFormulario);
 });
 
 async function enviarNovoPensamento(event) {
@@ -18,23 +18,23 @@ async function enviarNovoPensamento(event) {
     const conteudoNovoPensamento = document.querySelector('#pensamento-conteudo').value;
     const autoriaNovoPensamento = document.querySelector('#pensamento-autoria').value;
 
-    const novoPensamento = {
-        id: idNovoPensamento,
-        conteudo: conteudoNovoPensamento,
-        autoria: autoriaNovoPensamento
-    };
+    // const novoPensamento = {
+    //     id: idNovoPensamento,
+    //     conteudo: conteudoNovoPensamento,
+    //     autoria: autoriaNovoPensamento
+    // };
 
     try {
-        const pensamentoSalvo = await api.salvarPensamento(novoPensamento);
+        if(idNovoPensamento) {
+            await api.editarPensamento({ id: idNovoPensamento, conteudo: conteudoNovoPensamento, autoria: autoriaNovoPensamento });
+            ui.limparFormulario();
+            ui.renderizaPensamentos();
+        } else {
+            const pensamentoSalvo = await api.salvarPensamento({ conteudo: conteudoNovoPensamento, autoria: autoriaNovoPensamento });
+        }
         ui.criarPensamento(pensamentoSalvo);
     }
     catch (error) {
         console.error('Erro ao salvar pensamento:', error);
     }
-}
-
-function limparFormulario() {
-    document.querySelector('#pensamento-id').value = '';
-    document.querySelector('#pensamento-conteudo').value = '';
-    document.querySelector('#pensamento-autoria').value = '';
 }

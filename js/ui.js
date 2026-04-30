@@ -1,17 +1,20 @@
 import api from './api.js'
 
 const ui = {
+
+    // Função criada para buscar os pensamentos da API e renderizá-los na tela, utilizando o método GET
     async renderizaPensamentos() {
         const listaPensamentos = document.querySelector('#lista-pensamentos');
         try {
             const pensamentos = await api.buscarPensamentos();
-            pensamentos.forEach(ui.criarPensamento);
+            pensamentos.forEach(ui.criarPensamento); // Para cada pensamento retornado pela API, a função criarPensamento é chamada para renderizá-lo na tela
         }
         catch (error) {
             console.error('Erro ao carregar pensamentos:', error);
         }
     },
 
+    // Função criada para criar um novo card de pensamento, utilizando os dados retornados pela API
     async criarPensamento(pensamento) {
         const listaPensamentos = document.querySelector('#lista-pensamentos');
 
@@ -32,11 +35,56 @@ const ui = {
         divAutoria.classList.add('pensamento-autoria');
         divAutoria.textContent = pensamento.autoria;
 
+        const divBotoes = document.createElement('div');
+        divBotoes.classList.add('icones');
+
+        const btnEditar = document.createElement('button');
+        btnEditar.classList.add('botao-editar');
+        btnEditar.alt = 'Editar pensamento';
+        btnEditar.addEventListener('click', () => ui.preencherFormulario(pensamento)); // Ao clicar no botão de editar, a função preencherFormulario 
+
+        const imgEditar = document.createElement('img');
+        imgEditar.src = 'assets/imagens/icone-editar.png';
+        imgEditar.alt = 'Ícone de editar';
+        btnEditar.appendChild(imgEditar);
+
+        const btnExcluir = document.createElement('button');
+        btnExcluir.classList.add('botao-excluir');
+        btnExcluir.alt = 'Excluir pensamento';
+        btnExcluir.addEventListener('click', () => api.deletarPensamento(pensamento)); // Ao clicar no botão de excluir, a função deletarPensamento é chamada
+
+        const imgExcluir = document.createElement('img');
+        imgExcluir.src = 'assets/imagens/icone-excluir.png';
+        imgExcluir.alt = 'Ícone de excluir';
+        btnExcluir.appendChild(imgExcluir);
+        
         li.appendChild(img);
         li.appendChild(divConteudo);
         li.appendChild(divAutoria);
-
+        li.appendChild(divBotoes);
+        divBotoes.appendChild(btnEditar);
+        divBotoes.appendChild(btnExcluir);
         listaPensamentos.appendChild(li);
+    },
+
+    // Função criada para preencher o formulário de edição com os dados do pensamento selecionado, utilizando o método GET da API
+    async preencherFormulario(pensamento) {
+        try {
+            await api.buscarPensamento(pensamento.id);
+        }
+        catch (error) {
+            console.error('Erro ao buscar pensamento:', error);
+        }
+        document.querySelector('#pensamento-id').value = pensamento.id;
+        document.querySelector('#pensamento-conteudo').value = pensamento.conteudo;
+        document.querySelector('#pensamento-autoria').value = pensamento.autoria;
+    },
+
+    // Função criada para limpar o formulário de edição
+    async limparFormulario() {
+        document.querySelector('#pensamento-id').value = '';
+        document.querySelector('#pensamento-conteudo').value = '';
+        document.querySelector('#pensamento-autoria').value = '';
     }
 }
 
