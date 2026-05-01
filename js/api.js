@@ -1,8 +1,10 @@
+const urlBaseApi = 'http://localhost:3001/pensamentos';
+
 const api = {
     // Função criada para buscar dados da API, utilizando o método GET
     async buscarPensamentos() {
         try {
-            const response = await fetch('http://localhost:3001/pensamentos');
+            const response = await fetch(urlBaseApi);
             const data = await response.json();
             return data;
         }    
@@ -16,7 +18,7 @@ const api = {
     // Função criada para enviar dados para a API, utilizando o método POST
     async salvarPensamento(pensamento) {
         try {
-            const response = await fetch('http://localhost:3001/pensamentos', {
+            const response = await fetch(urlBaseApi, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -35,7 +37,7 @@ const api = {
     // Função criada para buscar um pensamento específico da API, utilizando o método GET
     async buscarPensamento(id) {
         try {
-            const response = await fetch(`http://localhost:3001/pensamentos/${id}`);
+            const response = await fetch(`${urlBaseApi}/${id}`);
             const data = await response.json();
             return data;
         }    
@@ -49,7 +51,7 @@ const api = {
     // Função criada para editar um pensamento específico da API, utilizando o método PUT
     async editarPensamento(pensamento) {
         try {
-            const response = await fetch(`http://localhost:3001/pensamentos/${pensamento.id}`, {
+            const response = await fetch(`${urlBaseApi}/${pensamento.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -68,7 +70,7 @@ const api = {
     // Função criada para deletar um pensamento específico de API, utilizando o método DELETE
     async deletarPensamento(pensamento) {
         try {
-            const response = await fetch(`http://localhost:3001/pensamentos/${pensamento.id}`, {
+            const response = await fetch(`${urlBaseApi}/${pensamento.id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
