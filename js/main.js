@@ -18,11 +18,10 @@ async function enviarNovoPensamento(event) {
     const conteudoNovoPensamento = document.querySelector('#pensamento-conteudo').value;
     const autoriaNovoPensamento = document.querySelector('#pensamento-autoria').value;
 
-    // const novoPensamento = {
-    //     id: idNovoPensamento,
-    //     conteudo: conteudoNovoPensamento,
-    //     autoria: autoriaNovoPensamento
-    // };
+    if(!conteudoNovoPensamento || !autoriaNovoPensamento) {
+        alert('Por favor, preencha todos os campos antes de enviar o pensamento.');
+        return;
+    }
 
     try {
         if(idNovoPensamento) {

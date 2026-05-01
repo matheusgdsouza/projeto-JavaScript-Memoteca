@@ -284,3 +284,17 @@ span {
   background: #041832;
   margin: 96px 0 48px 0;
 }
+
+.container__mural-vazio {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.mural-vazio__texto{
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--Cinza, #444);
+}

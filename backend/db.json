@@ -71,14 +71,9 @@
       "autoria": "Sr. Madruga"
     },
     {
-      "conteudo": "Pague o aluguel!",
-      "autoria": "Sr Barriga",
-      "id": "T9QkIt-_v9A"
-    },
-    {
-      "conteudo": "Deus ajuda quem cedo madruga, mas eu gosto de dormir tarde...",
-      "autoria": "Matheus Souza",
-      "id": "yOvxODwXPYo"
+      "id": "yOvxODwXPYo",
+      "conteudo": "Deus ajuda quem cedo madruga.",
+      "autoria": "Matheus Souza"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -5,8 +5,10 @@ const ui = {
     // Função criada para buscar os pensamentos da API e renderizá-los na tela, utilizando o método GET
     async renderizaPensamentos() {
         const listaPensamentos = document.querySelector('#lista-pensamentos');
+        
         try {
             const pensamentos = await api.buscarPensamentos();
+            listaPensamentos.innerHTML = ''; // Limpa a lista de pensamentos antes de renderizar os novos dados
             pensamentos.forEach(ui.criarPensamento); // Para cada pensamento retornado pela API, a função criarPensamento é chamada para renderizá-lo na tela
         }
         catch (error) {
@@ -15,7 +17,7 @@ const ui = {
     },
 
     // Função criada para criar um novo card de pensamento, utilizando os dados retornados pela API
-    async criarPensamento(pensamento) {
+    criarPensamento(pensamento) {
         const listaPensamentos = document.querySelector('#lista-pensamentos');
 
         const li = document.createElement('li');
@@ -51,7 +53,7 @@ const ui = {
         const btnExcluir = document.createElement('button');
         btnExcluir.classList.add('botao-excluir');
         btnExcluir.alt = 'Excluir pensamento';
-        btnExcluir.addEventListener('click', () => api.deletarPensamento(pensamento)); // Ao clicar no botão de excluir, a função deletarPensamento é chamada
+        btnExcluir.addEventListener('click', () => api.deletarPensamento(pensamento)); // Ao clicar no botão de excluir, afunção deletarPensamento é chamada para excluir o pensamento da API e da tela
 
         const imgExcluir = document.createElement('img');
         imgExcluir.src = 'assets/imagens/icone-excluir.png';
@@ -81,7 +83,7 @@ const ui = {
     },
 
     // Função criada para limpar o formulário de edição
-    async limparFormulario() {
+    limparFormulario() {
         document.querySelector('#pensamento-id').value = '';
         document.querySelector('#pensamento-conteudo').value = '';
         document.querySelector('#pensamento-autoria').value = '';
