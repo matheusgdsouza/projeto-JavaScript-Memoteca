@@ -66,14 +66,14 @@
       "autoria": "Mãe"
     },
     {
-      "id": "HCWl5fHTMs4",
-      "conteudo": "A vingança nunca é plena, mata a alma e a envenena.",
-      "autoria": "Sr. Madruga"
+      "conteudo": "Deus ajuda quem cedo madruga, mas eu gosto de dormir tarde...",
+      "autoria": "Matheus",
+      "id": "BAGve-E6jlA"
     },
     {
-      "id": "yOvxODwXPYo",
-      "conteudo": "Deus ajuda quem cedo madruga.",
-      "autoria": "Matheus Souza"
+      "id": "HWT5_CiET3Q",
+      "conteudo": "Pelo menos aqui esta rodando.",
+      "autoria": "Dev"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
